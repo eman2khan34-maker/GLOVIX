@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000000">
+<title>GLOVIX | Made in Mian Abdullah Gulzar</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:#fff;font-family:Arial,sans-serif}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+#auth{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at top,#40102d,#000 65%)}
+.authbox{width:100%;max-width:410px;background:#111;border:1px solid #333;border-radius:22px;padding:28px}
+.logo{text-align:center;font-size:48px;font-weight:900;letter-spacing:-3px;background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf);background-clip:text;color:transparent}
+.made{text-align:center;color:#aaa;font-size:10px;letter-spacing:2px;margin:10px 0 25px}
+h2{text-align:center}
+input,textarea{width:100%;padding:14px;margin:7px 0;background:#202020;border:1px solid #444;border-radius:10px;color:white}
+.btn{width:100%;padding:14px;border:0;border-radius:10px;background:linear-gradient(100deg,#fa7e1e,#d62976,#962fbf);color:white;font-weight:bold;margin:8px 0}
+.google{background:white;color:#111}
+.switch{text-align:center;color:#aaa;font-size:13px}
+.switch span{color:#fa7e1e;cursor:pointer}
+header{height:65px;position:sticky;top:0;background:#090909;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;padding:0 18px;z-index:10}
+header .logo{font-size:29px}
+#app{max-width:1100px;margin:auto}
+.layout{display:grid;grid-template-columns:200px minmax(0,600px);justify-content:center;gap:20px}
+.sidebar{position:sticky;top:75px;height:90vh;padding:15px}
+.nav{display:block;width:100%;padding:15px;text-align:left;color:white;background:none;border:0;border-radius:10px;font-size:15px}
+.nav:hover{background:#222}
+main{padding:15px 5px}
+.storyrow{display:flex;gap:15px;overflow:auto;border-bottom:1px solid #222;padding:15px 0}
+.story{min-width:65px;text-align:center;font-size:11px;color:#aaa}
+.story img{width:55px;height:55px;border-radius:50%;border:2px solid #d62976;object-fit:cover}
+.post{background:#101010;border:1px solid #282828;border-radius:13px;margin:18px 0;overflow:hidden}
+.posthead{display:flex;align-items:center;gap:10px;padding:12px}
+.avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;background:#333}
+.postvideo{width:100%;max-height:680px;display:block;background:#050505}
+.caption{padding:12px;overflow-wrap:anywhere}
+.actions{display:flex;gap:15px;padding:10px;flex-wrap:wrap}
+.actions button{background:none;border:0;color:white}
+.meta{padding:0 12px 12px;color:#888;font-size:11px}
+.panel{padding:18px;background:#111;border:1px solid #292929;border-radius:13px;margin:15px 0}
+#uploadFile{display:none}
+.uploadbox{display:block;text-align:center;border:1px dashed #777;padding:30px;border-radius:12px;cursor:pointer}
+#message{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:#333;padding:13px 18px;border-radius:10px;z-index:100;display:none;max-width:90%}
+.bottom{display:none;position:fixed;bottom:0;left:0;right:0;background:#080808;border-top:1px solid #333;justify-content:space-around;padding:12px;z-index:20}
+.bottom button{background:none;color:white;border:0;font-size:23px}
+@media(max-width:700px){
+.layout{display:block}
+.sidebar{display:none}
+main{padding:10px}
+.bottom{display:flex}
+}
+</style>
+</head>
+
+<body>
+
+<section id="auth">
+<div class="authbox">
+<div class="logo">GLOVIX</div>
+<div class="made">MADE IN MIAN ABDULLAH GULZAR</div>
+
+<div id="loginForm">
+<h2>Welcome Back</h2>
+<p style="text-align:center;color:#aaa">Login to your account</p>
+<input id="email" type="email" placeholder="Email address">
+<input id="password" type="password" placeholder="Password">
+<button class="btn" onclick="login()">LOGIN</button>
+<button class="btn google" onclick="googleLogin()">🌐 Continue with Google</button>
+<p class="switch"><span onclick="forgot()">Forgot password?</span></p>
+<p class="switch">New user? <span onclick="showSignup()">Create account</span></p>
+</div>
+
+<div id="signupForm" class="hidden">
+<h2>Create Account</h2>
+<input id="newName" placeholder="Username">
+<input id="newEmail" type="email" placeholder="Email">
+<input id="newPassword" type="password" placeholder="Password (6 characters minimum)">
+<button class="btn" onclick="signup()">CREATE ACCOUNT</button>
+<button class="btn google" onclick="googleLogin()">🌐 Sign up with Google</button>
+<p class="switch">Already registered? <span onclick="showLogin()">Login</span></p>
+</div>
+</div>
+</section>
+
+<section id="app" class="hidden">
+<header>
+<div class="logo">GLOVIX</div>
+<button onclick="logout()" style="background:#222;color:white;border:0;padding:10px;border-radius:8px">Logout</button>
+</header>
+
+<div class="layout">
+<aside class="sidebar">
+<button class="nav" onclick="page('home')">⌂ Home</button>
+<button class="nav" onclick="page('search')">⌕ Search</button>
+<button class="nav" onclick="page('upload')">＋ Upload video</button>
+<button class="nav" onclick="page('profile')">◉ My Profile</button>
+<button class="nav" onclick="page('notifications')">♡ Notifications</button>
+<div class="made">MADE IN MIAN ABDULLAH GULZAR</div>
+</aside>
+
+<main>
+
+<section id="homePage">
+<div class="storyrow">
+<div class="story">
+<img id="myAvatar" src="https://placehold.co/60x60/222/fff?text=G">
+<span>Your profile</span>
+</div>
+<div class="story">
+<img src="https://placehold.co/60x60/222/fff?text=G">
+<span>GLOVIX</span>
+</div>
+</div>
+<h3>For You 🌍</h3>
+<div id="feed">Loading videos...</div>
+</section>
+
+<section id="uploadPage" class="hidden">
+<h2>Upload Video</h2>
+<div class="panel">
+<label for="uploadFile" class="uploadbox">
+<div style="font-size:35px">＋</div>
+Choose a video
+<p style="color:#aaa;font-size:12px">Select a video from your device</p>
+</label>
+<input id="uploadFile" type="file" accept="video/*">
+<video id="preview" class="postvideo hidden" controls></video>
+<textarea id="caption" rows="3" placeholder="Write a caption..."></textarea>
+<button class="btn" onclick="uploadVideo()">PUBLISH VIDEO</button>
+</div>
+</section>
+
+<section id="profilePage" class="hidden">
+<h2>My Profile</h2>
+<div class="panel" id="profileArea"></div>
+</section>
+
+<section id="searchPage" class="hidden">
+<h2>Search People</h2>
+<input id="searchInput" placeholder="Search username..." oninput="searchUsers()">
+<div id="searchResults"></div>
+</section>
+
+<section id="notificationsPage" class="hidden">
+<h2>Notifications</h2>
+<div class="panel">Your GLOVIX notifications will appear here.</div>
+</section>
+
+</main>
+</div>
+</section>
+
+<div class="bottom">
+<button onclick="page('home')">⌂</button>
+<button onclick="page('search')">⌕</button>
+<button onclick="page('upload')">＋</button>
+<button onclick="page('notifications')">♡</button>
+<button onclick="page('profile')">◉</button>
+</div>
+
+<div id="message"></div>
+
+<script type="module">
+
+import {initializeApp}
+from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+
+import {
+getAuth,
+onAuthStateChanged,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+GoogleAuthProvider,
+signInWithPopup,
+sendPasswordResetEmail,
+signOut,
+updateProfile
+} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+doc,
+setDoc,
+getDoc,
+addDoc,
+getDocs,
+query,
+orderBy,
+limit,
+onSnapshot,
+runTransaction,
+serverTimestamp
+} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+
+import {
+getStorage,
+ref,
+uploadBytesResumable,
+getDownloadURL
+} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-storage.js";
+
+/* YOUR FIREBASE CONFIG */
+
+const firebaseConfig = {
+apiKey: "AIzaSyDt_xdmleZXslKW1PP1svbhEET_pgQHIz8",
+authDomain: "glovix-60038.firebaseapp.com",
+projectId: "glovix-60038",
+storageBucket: "glovix-60038.firebasestorage.app",
+messagingSenderId: "789789679127",
+appId: "1:789789679127:web:37dca7a9290c0cde218652",
+measurementId: "G-KNDB7ZW5TD"
+};
+
+const fb = initializeApp(firebaseConfig);
+const auth = getAuth(fb);
+const db = getFirestore(fb);
+const storage = getStorage(fb);
+const provider = new GoogleAuthProvider();
+
+let user = null;
+let selectedFile = null;
+let stopFeed = null;
+let busy = false;
+
+const $ = id => document.getElementById(id);
+
+function msg(t){
+$("message").textContent = t;
+$("message").style.display = "block";
+setTimeout(() => $("message").style.display = "none", 4000);
+}
+
+function safeName(n){
+return String(n || "User").replace(/[<>&"']/g,"").slice(0,30);
+}
+
+function authError(e){
+const code = e?.code || "";
+const messages = {
+"auth/invalid-email":"Email address sahi nahi hai.",
+"auth/user-not-found":"Is email ka account nahi mila. Pehle account banayein.",
+"auth/wrong-password":"Password ghalat hai.",
+"auth/invalid-credential":"Email ya password ghalat hai.",
+"auth/email-already-in-use":"Is email se account pehle se bana hua hai.",
+"auth/weak-password":"Password kam az kam 6 characters ka rakhein.",
+"auth/operation-not-allowed":"Firebase mein Email/Password login enable karein.",
+"auth/unauthorized-domain":"Firebase Authorized domains mein GitHub Pages domain add karein.",
+"auth/popup-blocked":"Browser ne Google login popup block kar diya.",
+"auth/popup-closed-by-user":"Google login popup band kar diya gaya.",
+"auth/network-request-failed":"Internet connection check karein."
+};
+return messages[code] || (code + ": " + (e?.message || "Unknown error"));
+}
+
+window.showSignup = () => {
+$("loginForm").classList.add("hidden");
+$("signupForm").classList.remove("hidden");
+};
+
+window.showLogin = () => {
+$("signupForm").classList.add("hidden");
+$("loginForm").classList.remove("hidden");
+};
+
+async function saveUser(u,name){
+const r = doc(db,"users",u.uid);
+const s = await getDoc(r);
+
+await setDoc(r,{
+uid:u.uid,
+username:safeName(name || u.displayName || u.email?.split("@")[0]),
+email:u.email || "",
+photo:u.photoURL || "",
+createdAt:s.exists() ? s.data().createdAt : serverTimestamp()
+},{merge:true});
+}
+
+window.signup = async () => {
+if(busy)return;
+
+const name = $("newName").value.trim();
+const email = $("newEmail").value.trim();
+const pass = $("newPassword").value;
+
+if(!name || !email || pass.length < 6){
+return msg("Username, email aur kam az kam 6 character password likhein.");
+}
+
+busy = true;
+
+try{
+const r = await createUserWithEmailAndPassword(auth,email,pass);
+await updateProfile(r.user,{displayName:name});
+await saveUser(r.user,name);
+msg("GLOVIX account ban gaya!");
+}catch(e){
+msg(authError(e));
+}finally{
+busy = false;
+}
+};
+
+window.login = async () => {
+if(busy)return;
+
+const email = $("email").value.trim();
+const password = $("password").value;
+
+if(!email || !password){
+return msg("Email aur password dono likhein.");
+}
+
+busy = true;
+
+try{
+await signInWithEmailAndPassword(auth,email,password);
+msg("Login successful!");
+}catch(e){
+msg(authError(e));
+}finally{
+busy = false;
+}
+};
+
+window.googleLogin = async () => {
+try{
+const result = await signInWithPopup(auth,provider);
+await saveUser(result.user);
+msg("Google login successful!");
+}catch(e){
+msg(authError(e));
+}
+};
+
+window.forgot = async () => {
+const email = $("email").value.trim();
+
+if(!email){
+return msg("Pehle email address likhein.");
+}
+
+try{
+await sendPasswordResetEmail(auth,email);
+msg("Password reset email bhej di gayi hai.");
+}catch(e){
+msg(authError(e));
+}
+};
+
+window.logout = async () => {
+try{
+await signOut(auth);
+}catch(e){
+msg(authError(e));
+}
+};
+
+onAuthStateChanged(auth,async u => {
+user = u;
+
+if(u){
+$("auth").classList.add("hidden");
+$("app").classList.remove("hidden");
+$("myAvatar").src = u.photoURL || "https://placehold.co/60x60/222/fff?text=G";
+
+try{
+await saveUser(u);
+}catch(e){
+msg("Profile save error: " + e.message);
+}
+
+loadFeed();
+loadProfile();
+
+}else{
+if(stopFeed)stopFeed();
+$("app").classList.add("hidden");
+$("auth").classList.remove("hidden");
+}
+});
+
+window.page = p => {
+["home","upload","profile","search","notifications"].forEach(x => {
+$(x+"Page").classList.add("hidden");
+});
+
+$(p+"Page").classList.remove("hidden");
+
+if(p==="home")loadFeed();
+if(p==="profile")loadProfile();
+};
+
+$("uploadFile").addEventListener("change",e => {
+selectedFile = e.target.files[0];
+
+if(!selectedFile)return;
+
+if(!selectedFile.type.startsWith("video/")){
+selectedFile = null;
+return msg("Video file select karein.");
+}
+
+if(selectedFile.size > 100*1024*1024){
+selectedFile = null;
+return msg("Video 100 MB se chhoti honi chahiye.");
+}
+
+$("preview").src = URL.createObjectURL(selectedFile);
+$("preview").classList.remove("hidden");
+});
+
+window.uploadVideo = async () => {
+if(!user)return msg("Pehle login karein.");
+if(!selectedFile)return msg("Pehle video select karein.");
+if(busy)return;
+
+busy = true;
+
+try{
+msg("Video upload ho rahi hai...");
+
+const path = "videos/"+user.uid+"/"+Date.now()+"_"+selectedFile.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+
+const task = uploadBytesResumable(ref(storage,path),selectedFile);
+
+await new Promise((resolve,reject) => {
+task.on("state_changed",s => {
+$("message").textContent = "Uploading "+Math.round(s.bytesTransferred/s.totalBytes*100)+"%";
+},reject,resolve);
+});
+
+const url = await getDownloadURL(task.snapshot.ref);
+const u = await getDoc(doc(db,"users",user.uid));
+
+await addDoc(collection(db,"posts"),{
+uid:user.uid,
+username:u.data()?.username || "User",
+photo:user.photoURL || "",
+videoUrl:url,
+caption:$("caption").value.trim().slice(0,2000),
+likes:0,
+createdAt:serverTimestamp()
+});
+
+selectedFile = null;
+$("uploadFile").value = "";
+$("caption").value = "";
+$("preview").removeAttribute("src");
+$("preview").classList.add("hidden");
+
+msg("Video publish ho gayi!");
+page("home");
+
+}catch(e){
+msg("Upload error: "+e.message);
+}finally{
+busy = false;
+}
+};
+
+function loadFeed(){
+if(stopFeed)stopFeed();
+
+const q = query(
+collection(db,"posts"),
+orderBy("createdAt","desc"),
+limit(40)
+);
+
+stopFeed = onSnapshot(q,snap => {
+const feed = $("feed");
+feed.innerHTML = "";
+
+if(snap.empty){
+feed.textContent = "Abhi koi video nahi. Pehli video upload karein!";
+return;
+}
+
+snap.forEach(d => {
+const p = d.data();
+const id = d.id;
+
+const post = document.createElement("article");
+post.className = "post";
+
+const head = document.createElement("div");
+head.className = "posthead";
+
+const av = document.createElement("img");
+av.className = "avatar";
+av.src = p.photo || "https://placehold.co/50x50/222/fff?text=G";
+
+const name = document.createElement("b");
+name.textContent = p.username || "User";
+
+head.append(av,name);
+
+const video = document.createElement("video");
+video.className = "postvideo";
+video.src = p.videoUrl;
+video.controls = true;
+video.playsInline = true;
+video.preload = "metadata";
+
+const cap = document.createElement("div");
+cap.className = "caption";
+cap.textContent = p.caption || "";
+
+const actions = document.createElement("div");
+actions.className = "actions";
+
+const like = document.createElement("button");
+like.textContent = "♡ "+(p.likes || 0)+" Likes";
+like.onclick = () => toggleLike(id);
+
+const comment = document.createElement("button");
+comment.textContent = "💬 Comment";
+comment.onclick = () => commentPost(id);
+
+const share = document.createElement("button");
+share.textContent = "↗ Share";
+share.onclick = () => sharePost(id);
+
+const follow = document.createElement("button");
+follow.textContent = p.uid === user.uid ? "Your video" : "＋ Follow";
+follow.disabled = p.uid === user.uid;
+follow.onclick = () => followUser(p.uid);
+
+actions.append(like,comment,share,follow);
+
+const meta = document.createElement("div");
+meta.className = "meta";
+meta.textContent = "GLOVIX • "+(p.createdAt?.toDate ? p.createdAt.toDate().toLocaleString() : "Recently");
+
+post.append(head,video,cap,actions,meta);
+feed.append(post);
+});
+
+},e => msg("Feed error: "+e.message));
+}
+
+async function toggleLike(id){
+try{
+const likeRef = doc(db,"posts",id,"likes",user.uid);
+const postRef = doc(db,"posts",id);
+
+await runTransaction(db,async tx => {
+const l = await tx.get(likeRef);
+const p = await tx.get(postRef);
+
+if(!p.exists())return;
+
+const count = Number(p.data().likes || 0);
+
+if(l.exists()){
+tx.delete(likeRef);
+tx.update(postRef,{likes:Math.max(0,count-1)});
+}else{
+tx.set(likeRef,{uid:user.uid,createdAt:serverTimestamp()});
+tx.update(postRef,{likes:count+1});
+}
+});
+
+}catch(e){
+msg("Like error: "+e.message);
+}
+}
+
+window.commentPost = async id => {
+const text = prompt("Apna comment likhein:");
+
+if(!text || !text.trim())return;
+
+try{
+const u = await getDoc(doc(db,"users",user.uid));
+
+await addDoc(collection(db,"posts",id,"comments"),{
+uid:user.uid,
+username:u.data()?.username || "User",
+text:text.trim().slice(0,1000),
+createdAt:serverTimestamp()
+});
+
+msg("Comment post ho gaya!");
+
+}catch(e){
+msg("Comment error: "+e.message);
+}
+};
+
+window.sharePost = async id => {
+const url = location.href.split("#")[0]+"#post-"+id;
+
+try{
+if(navigator.share){
+await navigator.share({title:"GLOVIX",url});
+}else{
+await navigator.clipboard.writeText(url);
+msg("Video link copy ho gaya!");
+}
+}catch(e){}
+};
+
+async function followUser(uid){
+if(uid===user.uid)return;
+
+try{
+await setDoc(doc(db,"users",user.uid,"following",uid),{
+uid:uid,
+createdAt:serverTimestamp()
+});
+
+await setDoc(doc(db,"users",uid,"followers",user.uid),{
+uid:user.uid,
+createdAt:serverTimestamp()
+});
+
+msg("You are following this user!");
+
+}catch(e){
+msg("Follow error: "+e.message);
+}
+}
+
+async function loadProfile(){
+if(!user)return;
+
+const s = await getDoc(doc(db,"users",user.uid));
+const u = s.data() || {};
+
+const area = $("profileArea");
+area.innerHTML = "";
+
+const av = document.createElement("img");
+av.className = "avatar";
+av.style.width = "80px";
+av.style.height = "80px";
+av.src = u.photo || user.photoURL || "https://placehold.co/80x80/222/fff?text=G";
+
+const title = document.createElement("h3");
+title.textContent = u.username || "User";
+
+const email = document.createElement("p");
+email.textContent = user.email || "";
+email.style.color = "#aaa";
+
+const edit = document.createElement("button");
+edit.className = "btn";
+edit.textContent = "Edit username";
+
+edit.onclick = async () => {
+const n = prompt("New username",u.username || "");
+
+if(!n || !n.trim())return;
+
+try{
+await setDoc(doc(db,"users",user.uid),{
+username:safeName(n)
+},{merge:true});
+
+msg("Username update ho gaya!");
+loadProfile();
+
+}catch(e){
+msg(e.message);
+}
+};
+
+const stats = document.createElement("p");
+stats.textContent = "GLOVIX Creator";
+
+area.append(av,title,email,edit,stats);
+}
+
+window.searchUsers = async () => {
+const term = $("searchInput").value.trim().toLowerCase();
+const results = $("searchResults");
+
+results.innerHTML = "";
+
+if(term.length < 2)return;
+
+try{
+const q = query(
+collection(db,"users"),
+orderBy("username"),
+limit(100)
+);
+
+const s = await getDocs(q);
+
+s.forEach(d => {
+const u = d.data();
+
+if((u.username || "").toLowerCase().includes(term)){
+const box = document.createElement("div");
+box.className = "panel";
+box.textContent = u.username || "User";
+results.append(box);
+}
+});
+
+if(!results.children.length){
+results.textContent = "No users found.";
+}
+
+}catch(e){
+msg("Search error: "+e.message);
+}
+};
+
+</script>
+</body>
+</html>
