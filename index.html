@@ -4,748 +4,215 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#000000">
-<title>GLOVIX - Made in Mian Abdullah Gulzar</title>
-
+<meta name="theme-color" content="#2878e8">
+<title>DAYMATE - Daily Life Assistant</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#000;color:#fff;font-family:Arial,sans-serif}
-button,input,textarea{font:inherit}
-button{cursor:pointer;border:0}
-:root{--pink:#d62976;--orange:#fa7e1e;--purple:#962fbf;--line:#262626}
-.gradient{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf)}
-.logo{font-family:Georgia,serif;font-style:italic;font-size:32px;font-weight:bold;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf);background-clip:text;color:transparent}
-header{height:60px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;background:#000;z-index:10}
-header button{background:none;color:white;font-size:22px;padding:8px}
-#app{display:none;max-width:1100px;margin:auto;padding-bottom:75px}
-.layout{display:grid;grid-template-columns:minmax(0,650px) 300px;gap:35px;padding:20px}
-.card{border:1px solid var(--line);border-radius:12px;margin-bottom:18px;overflow:hidden;background:#080808}
-.auth{max-width:390px;margin:55px auto;padding:25px;border:1px solid var(--line);border-radius:12px;text-align:center}
-.auth h2{margin:12px 0 22px}
-.field{width:100%;padding:13px;background:#121212;border:1px solid #333;border-radius:7px;color:white;margin:7px 0;outline:none}
-.btn{padding:12px 16px;border-radius:7px;color:white;background:linear-gradient(45deg,#fa7e1e,#d62976,#962fbf);font-weight:bold}
-.btn2{padding:10px 14px;border-radius:7px;color:white;background:#222;border:1px solid #444}
-.full{width:100%;margin-top:10px}
-.small{font-size:12px;color:#aaa}
-.muted{color:#aaa}
-.nav{position:fixed;bottom:0;left:0;right:0;background:#000;border-top:1px solid var(--line);display:flex;justify-content:center;gap:clamp(12px,5vw,55px);padding:12px;z-index:20}
-.nav button{background:none;color:white;font-size:23px}
-.stories{display:flex;gap:15px;overflow-x:auto;padding:15px}
-.story{min-width:65px;text-align:center;font-size:11px;color:#ddd}
-.story img,.story .circle{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #d62976;padding:2px}
-.story .circle{display:grid;place-items:center;background:#222;font-size:24px}
-.post-head{display:flex;align-items:center;gap:10px;padding:12px}
-.avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;background:#333}
-.post-media{width:100%;max-height:600px;object-fit:contain;background:#050505;display:block}
-.post-actions{display:flex;gap:18px;padding:12px}
-.post-actions button{background:none;color:white;font-size:22px}
-.post-caption{padding:0 13px 12px;line-height:1.5;overflow-wrap:anywhere}
-.post-meta{padding:0 13px 12px;color:#aaa;font-size:12px}
-.post-comments{padding:0 13px 12px}
-.comment-row{font-size:13px;padding:4px 0;overflow-wrap:anywhere}
-.comment-form{display:flex;gap:7px;padding:10px;border-top:1px solid #222}
-.comment-form input{flex:1;min-width:0;background:#111;color:white;border:0;padding:10px}
-.comment-form button{background:none;color:#d62976;font-weight:bold}
-.side{padding-top:10px}
-.side .card{padding:15px}
-.section{display:none;padding:20px}
-.section.active{display:block}
-.section h2{margin-bottom:15px}
-.user-row{display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid #222}
-.user-row .btn,.user-row .btn2{margin-left:auto;padding:8px 12px}
-#toast{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#222;padding:12px 18px;border-radius:8px;z-index:50;display:none;max-width:90%;text-align:center}
-#uploadPreview{max-width:100%;max-height:250px;display:none;margin:10px auto}
-.profile-top{text-align:center;padding:20px}
-.profile-top img{width:90px;height:90px;border-radius:50%;object-fit:cover}
-.profile-stats{display:flex;justify-content:center;gap:25px;margin:15px}
-.profile-stats b{display:block;text-align:center}
-.reel{min-height:75vh;display:flex;align-items:center;justify-content:center;scroll-snap-align:start}
-.reel video,.reel img{max-height:75vh;max-width:100%;object-fit:contain}
-.empty{text-align:center;color:#999;padding:25px}
-@media(max-width:750px){
-.layout{display:block;padding:10px}.side{display:none}
-header{padding:0 12px}.logo{font-size:27px}
-}
+:root{--blue:#2878e8;--blue2:#eaf2ff;--ink:#17243a;--muted:#718096;--bg:#f5f8fd;--white:#fff;--line:#e6edf6;--green:#16a36a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial, sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+header{background:white;border-bottom:1px solid var(--line);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
+.logo{font-size:25px;font-weight:900;color:var(--blue);letter-spacing:1px}
+.logo small{display:block;font-size:10px;color:var(--muted);letter-spacing:2px}
+#lang{padding:9px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--ink)}
+main{max-width:1050px;margin:25px auto;padding:0 16px 40px}
+.welcome{background:linear-gradient(120deg,#2878e8,#65a6ff);color:white;padding:25px;border-radius:20px;margin-bottom:20px}
+.welcome h1{margin:0 0 8px;font-size:26px}
+.welcome p{margin:0;opacity:.9}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.stat,.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:17px}
+.stat strong{font-size:25px;color:var(--blue);display:block;margin-bottom:4px}
+.stat span{font-size:13px;color:var(--muted)}
+nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px}
+nav button{border:0;background:white;color:var(--muted);padding:11px 16px;border-radius:12px;white-space:nowrap}
+nav button.active{background:var(--blue);color:white}
+.panel{margin-bottom:15px}
+.panel h2{font-size:19px;margin:0 0 14px}
+.addrow{display:flex;gap:8px;margin-bottom:15px}
+input,textarea,select{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;color:var(--ink);min-width:0}
+.addrow input{flex:1}
+.primary{background:var(--blue);border:0;color:white;padding:12px 17px;border-radius:10px;font-weight:700}
+.secondary{background:var(--blue2);border:0;color:var(--blue);padding:9px 12px;border-radius:9px}
+.item{display:flex;align-items:center;gap:10px;padding:12px 2px;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.item .itemtext{flex:1;overflow-wrap:anywhere}
+.item.done .itemtext{text-decoration:line-through;color:#9aa6b5}
+.item input[type=checkbox]{accent-color:var(--blue);width:18px;height:18px}
+.del{border:0;background:#fff0f0;color:#d44;padding:7px 10px;border-radius:8px}
+.muted{color:var(--muted);font-size:13px}
+.hidden{display:none!important}
+.habitday{border:0;background:var(--blue2);color:var(--blue);padding:9px;border-radius:9px;font-size:12px}
+.habitday.done{background:#d9f7e9;color:#087a4c}
+.note{background:#f8fbff;border:1px solid var(--line);padding:13px;border-radius:12px;margin:10px 0}
+.note p{white-space:pre-wrap;overflow-wrap:anywhere}
+.progressbar{height:12px;background:#e9eff8;border-radius:20px;overflow:hidden}
+.progressbar div{height:100%;background:var(--blue);width:0;transition:.2s}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:600px){header{padding:12px 15px}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:21px}.welcome{padding:20px}.addrow{flex-wrap:wrap}.addrow input{width:100%;flex-basis:100%}}
 </style>
 </head>
-
 <body>
 <header>
-  <div class="logo">GLOVIX</div>
-  <div>
-    <button onclick="showSection('notifications')" title="Notifications">♡</button>
-    <button onclick="showSection('messages')" title="Messages">✉</button>
-  </div>
+  <div class="logo">DAYMATE<small>YOUR DAILY LIFE ASSISTANT</small></div>
+  <select id="lang" aria-label="Language">
+    <option value="en">English</option>
+    <option value="ur">اردو</option>
+    <option value="es">Español</option>
+    <option value="ar">العربية</option>
+    <option value="fr">Français</option>
+    <option value="hi">हिन्दी</option>
+    <option value="zh">中文</option>
+    <option value="pt">Português</option>
+    <option value="de">Deutsch</option>
+  </select>
 </header>
 
-<div id="toast"></div>
+<main>
+  <section class="welcome">
+    <h1 id="greeting">Make today count!</h1>
+    <p id="todaydate"></p>
+    <p id="welcomeSub" style="margin-top:9px">Small steps every day lead to big results.</p>
+  </section>
 
-<div id="auth" class="auth">
-  <div class="logo">GLOVIX</div>
-  <p class="small">MADE IN MIAN ABDULLAH GULZAR</p>
-  <h2 id="authTitle">Welcome to GLOVIX</h2>
-  <input id="name" class="field" placeholder="Your name" style="display:none">
-  <input id="email" class="field" type="email" placeholder="Email address">
-  <input id="password" class="field" type="password" placeholder="Password">
-  <button class="btn full" id="mainAuthBtn" onclick="login()">Log In</button>
-  <button class="btn2 full" onclick="googleLogin()">Continue with Google</button>
-  <p style="margin-top:18px" class="small">
-    <span id="switchText">Don't have an account?</span>
-    <a href="#" style="color:#fa7e1e" onclick="toggleAuth();return false" id="switchLink">Sign up</a>
-  </p>
-  <p style="margin-top:12px"><a href="#" onclick="forgotPassword();return false" class="small">Forgot password?</a></p>
-</div>
+  <section class="stats">
+    <div class="stat"><strong id="taskCount">0</strong><span id="tasksLabel">Tasks completed</span></div>
+    <div class="stat"><strong id="habitCount">0</strong><span id="habitsLabel">Habits today</span></div>
+    <div class="stat"><strong id="noteCount">0</strong><span id="notesLabel">Saved notes</span></div>
+  </section>
 
-<div id="app">
-  <div class="layout">
-    <main>
-      <div id="homeSection" class="section active">
-        <div class="card">
-          <div class="stories" id="stories">
-            <div class="story" onclick="showSection('upload')">
-              <div class="circle">＋</div>
-              Your story
-            </div>
-          </div>
-        </div>
-        <div id="feed"><div class="empty">Loading posts...</div></div>
+  <nav>
+    <button class="active" data-tab="today" data-i="today">Today</button>
+    <button data-tab="habits" data-i="habits">Habits</button>
+    <button data-tab="notes" data-i="notes">Notes</button>
+    <button data-tab="progress" data-i="progress">Progress</button>
+    <button data-tab="settings" data-i="settings">Settings</button>
+  </nav>
+
+  <section id="today" class="tab">
+    <div class="panel">
+      <h2 id="taskHeading">My daily tasks</h2>
+      <div class="addrow">
+        <input id="taskInput" maxlength="120" placeholder="What do you need to do?">
+        <button class="primary" id="addTask">+ Add task</button>
       </div>
+      <div id="taskList"></div>
+      <p id="noTasks" class="muted">No tasks yet. Add your first task above.</p>
+    </div>
+  </section>
 
-      <div id="reelsSection" class="section">
-        <h2>Reels</h2>
-        <div id="reelsFeed"><div class="empty">No reels yet.</div></div>
+  <section id="habits" class="tab hidden">
+    <div class="panel">
+      <h2 id="habitHeading">Build good habits</h2>
+      <div class="addrow">
+        <input id="habitInput" maxlength="80" placeholder="e.g. Read 10 minutes">
+        <button class="primary" id="addHabit">+ Add habit</button>
       </div>
+      <div id="habitList"></div>
+      <p id="noHabits" class="muted">Add a habit you want to build.</p>
+    </div>
+  </section>
 
-      <div id="uploadSection" class="section">
-        <h2>Create post</h2>
-        <div class="card" style="padding:16px">
-          <input id="postFile" class="field" type="file" accept="image/*,video/*">
-          <video id="uploadPreview" controls></video>
-          <img id="imagePreview" style="display:none;max-width:100%;max-height:250px;margin:10px auto">
-          <textarea id="caption" class="field" rows="4" placeholder="Write a caption..."></textarea>
-          <button class="btn full" onclick="uploadPost()">Share post</button>
-          <p class="small" style="margin-top:10px">Images and videos are uploaded to your Firebase Storage.</p>
-          <hr style="border-color:#222;margin:20px 0">
-          <h3>Upload a 24-hour Story</h3>
-          <input id="storyFile" class="field" type="file" accept="image/*,video/*">
-          <button class="btn full" onclick="uploadStory()">Share Story</button>
-        </div>
-      </div>
+  <section id="notes" class="tab hidden">
+    <div class="panel">
+      <h2 id="notesHeading">Quick notes</h2>
+      <input id="noteTitle" maxlength="80" placeholder="Note title" style="width:100%;margin-bottom:9px">
+      <textarea id="noteBody" maxlength="2000" placeholder="Write your idea..." rows="4" style="width:100%;resize:vertical"></textarea>
+      <button class="primary" id="addNote" style="margin-top:9px">Save note</button>
+      <div id="noteList" style="margin-top:15px"></div>
+      <p id="noNotes" class="muted">Your saved notes will appear here.</p>
+    </div>
+  </section>
 
-      <div id="searchSection" class="section">
-        <h2>Search people</h2>
-        <input id="searchInput" class="field" placeholder="Search username..." oninput="searchUsers()">
-        <div id="searchResults"></div>
-      </div>
+  <section id="progress" class="tab hidden">
+    <div class="panel">
+      <h2 id="progressHeading">Today's progress</h2>
+      <p id="progressText" class="muted">Complete your tasks to make progress.</p>
+      <div class="progressbar"><div id="progressBar"></div></div>
+      <p id="progressPercent" style="font-weight:bold;color:var(--blue)">0%</p>
+      <p class="muted" id="progressHint">Your progress is based on today's tasks.</p>
+    </div>
+  </section>
 
-      <div id="notificationsSection" class="section">
-        <h2>Notifications <span id="unreadCount" class="small"></span></h2>
-        <div id="notificationList"><div class="empty">No notifications yet.</div></div>
-      </div>
+  <section id="settings" class="tab hidden">
+    <div class="panel">
+      <h2 id="settingsHeading">Settings</h2>
+      <p id="languageHint" class="muted">Choose your preferred language from the top menu.</p>
+      <button class="secondary" id="exportBtn">Export my data</button>
+      <button class="secondary" id="clearBtn" style="margin-left:6px">Clear all data</button>
+      <p class="muted" id="privacyHint" style="margin-top:15px">Your information is saved in this browser on this device. It is not synced to other devices.</p>
+    </div>
+  </section>
+</main>
+<footer>DAYMATE • Made to help you make every day count.</footer>
 
-      <div id="profileSection" class="section">
-        <div class="card profile-top">
-          <img id="profilePhoto" src="" alt="Profile">
-          <h2 id="profileName">Your profile</h2>
-          <p id="profileEmail" class="small"></p>
-          <div class="profile-stats">
-            <div><b id="postCount">0</b><span class="small">Posts</span></div>
-            <div><b id="followersCount">0</b><span class="small">Followers</span></div>
-            <div><b id="followingCount">0</b><span class="small">Following</span></div>
-          </div>
-          <input id="editUsername" class="field" placeholder="Change username">
-          <button class="btn" onclick="updateUsername()">Save username</button>
-          <input id="photoFile" class="field" type="file" accept="image/*">
-          <button class="btn2" onclick="updatePhoto()">Change profile photo</button>
-        </div>
-        <h3>Your posts</h3>
-        <div id="myPosts"></div>
-        <div class="card" style="padding:15px;margin-top:20px">
-          <h3>Account verification</h3>
-          <p class="small" style="margin:8px 0">Send a request for account verification. Approval is not automatic.</p>
-          <textarea id="verifyReason" class="field" placeholder="Why should your account be verified?"></textarea>
-          <button class="btn" onclick="requestVerification()">Send verification request</button>
-          <p id="verifyStatus" class="small" style="margin-top:10px"></p>
-        </div>
-        <button class="btn2 full" onclick="logout()">Log out</button>
-      </div>
-
-      <div id="messagesSection" class="section">
-        <h2>Messages</h2>
-        <p class="empty">Messaging feature is not enabled in this version.</p>
-      </div>
-    </main>
-
-    <aside class="side">
-      <div class="card">
-        <p class="small">Welcome to GLOVIX</p>
-        <h3 id="sideUsername">Your account</h3>
-        <p class="small">MADE IN MIAN ABDULLAH GULZAR</p>
-      </div>
-      <div class="card">
-        <h3>Explore</h3>
-        <p class="small" style="margin-top:10px">Share your moments with the world.</p>
-      </div>
-    </aside>
-  </div>
-</div>
-
-<nav class="nav" id="bottomNav" style="display:none">
-  <button onclick="showSection('home')" title="Home">⌂</button>
-  <button onclick="showSection('search')" title="Search">⌕</button>
-  <button onclick="showSection('upload')" title="Upload">⊕</button>
-  <button onclick="showSection('reels')" title="Reels">▣</button>
-  <button onclick="showSection('profile')" title="Profile">♙</button>
-</nav>
-
-<script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import {
-  getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,
-  sendPasswordResetEmail,signOut,updateProfile as authUpdateProfile
-} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import {
-  getFirestore,collection,doc,setDoc,getDoc,addDoc,getDocs,
-  query,where,orderBy,limit,onSnapshot,serverTimestamp,
-  runTransaction,updateDoc,deleteDoc
-} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-import {
-  getStorage,ref,uploadBytesResumable,getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
-  
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDt_xdmleZXslKW1PP1svbhEET_pgQHIz8",
-  authDomain: "glovix-60038.firebaseapp.com",
-  projectId: "glovix-60038",
-  storageBucket: "glovix-60038.firebasestorage.app",
-  messagingSenderId: "789789679127",
-  appId: "1:789789679127:web:37dca7a9290c0cde218652",
-  measurementId: "G-KNDB7ZW5TD"
+<script>
+const translations = {
+en:{greeting:"Make today count!",sub:"Small steps every day lead to big results.",tasks:"Tasks completed",habits:"Habits today",notes:"Saved notes",today:"Today",habitsTab:"Habits",notesTab:"Notes",progress:"Progress",settings:"Settings",taskHeading:"My daily tasks",taskPlaceholder:"What do you need to do?",addTask:"+ Add task",noTasks:"No tasks yet. Add your first task above.",habitHeading:"Build good habits",habitPlaceholder:"e.g. Read 10 minutes",addHabit:"+ Add habit",noHabits:"Add a habit you want to build.",notesHeading:"Quick notes",noteTitle:"Note title",noteBody:"Write your idea...",saveNote:"Save note",noNotes:"Your saved notes will appear here.",progressHeading:"Today's progress",progressText:"Complete your tasks to make progress.",progressHint:"Your progress is based on today's tasks.",settingsHeading:"Settings",languageHint:"Choose your preferred language from the top menu.",export:"Export my data",clear:"Clear all data",privacy:"Your information is saved in this browser on this device. It is not synced to other devices.",confirm:"Delete all your DAYMATE data from this browser?",empty:"Please write something first.",allDone:"Great work! All tasks completed."},
+ur:{greeting:"Aaj ka din behtareen banayein!",sub:"Roz ke chhote qadam bari kamyabi laate hain.",tasks:"Mukammal kaam",habits:"Aaj ki aadatein",notes:"Mehfooz notes",today:"Aaj",habitsTab:"Aadatein",notesTab:"Notes",progress:"Taraqqi",settings:"Settings",taskHeading:"Mere rozana kaam",taskPlaceholder:"Aap ko kya karna hai?",addTask:"+ Kaam add karein",noTasks:"Abhi koi kaam nahi. Pehla kaam add karein.",habitHeading:"Achhi aadatein banayein",habitPlaceholder:"Misal: 10 minute parhna",addHabit:"+ Aadat add karein",noHabits:"Woh aadat add karein jo aap banana chahte hain.",notesHeading:"Quick notes",noteTitle:"Note ka title",noteBody:"Apna idea likhein...",saveNote:"Note save karein",noNotes:"Aapke notes yahan nazar aayenge.",progressHeading:"Aaj ki taraqqi",progressText:"Taraqqi ke liye apne kaam mukammal karein.",progressHint:"Taraqqi aaj ke kaamon par mabni hai.",settingsHeading:"Settings",languageHint:"Upar menu se apni zaban chunein.",export:"Mera data export karein",clear:"Saara data delete karein",privacy:"Aapka data isi device ke browser mein save hota hai. Doosre devices par sync nahi hota.",confirm:"Kya aap DAYMATE ka sara data delete karna chahte hain?",empty:"Pehle kuch likhein.",allDone:"Shabash! Saare kaam mukammal ho gaye."},
+es:{greeting:"¡Haz que hoy cuente!",sub:"Pequeños pasos diarios llevan a grandes resultados.",tasks:"Tareas completadas",habits:"Hábitos de hoy",notes:"Notas guardadas",today:"Hoy",habitsTab:"Hábitos",notesTab:"Notas",progress:"Progreso",settings:"Ajustes",taskHeading:"Mis tareas diarias",taskPlaceholder:"¿Qué necesitas hacer?",addTask:"+ Añadir tarea",noTasks:"No hay tareas. Añade tu primera tarea.",habitHeading:"Crea buenos hábitos",habitPlaceholder:"Ej. Leer 10 minutos",addHabit:"+ Añadir hábito",noHabits:"Añade un hábito que quieras crear.",notesHeading:"Notas rápidas",noteTitle:"Título de la nota",noteBody:"Escribe tu idea...",saveNote:"Guardar nota",noNotes:"Tus notas aparecerán aquí.",progressHeading:"Progreso de hoy",progressText:"Completa tareas para avanzar.",progressHint:"Tu progreso se basa en las tareas de hoy.",settingsHeading:"Ajustes",languageHint:"Elige tu idioma en el menú superior.",export:"Exportar mis datos",clear:"Borrar todos los datos",privacy:"Tus datos se guardan en este navegador y dispositivo.",confirm:"¿Borrar todos tus datos de DAYMATE?",empty:"Escribe algo primero.",allDone:"¡Buen trabajo! Todas las tareas completadas."},
+ar:{greeting:"اجعل يومك مميزاً!",sub:"الخطوات الصغيرة كل يوم تقود إلى نتائج كبيرة.",tasks:"المهام المكتملة",habits:"عادات اليوم",notes:"الملاحظات المحفوظة",today:"اليوم",habitsTab:"العادات",notesTab:"الملاحظات",progress:"التقدم",settings:"الإعدادات",taskHeading:"مهامي اليومية",taskPlaceholder:"ماذا تريد أن تفعل؟",addTask:"+ إضافة مهمة",noTasks:"لا توجد مهام بعد. أضف مهمتك الأولى.",habitHeading:"ابنِ عادات جيدة",habitPlaceholder:"مثال: القراءة 10 دقائق",addHabit:"+ إضافة عادة",noHabits:"أضف عادة تريد بناءها.",notesHeading:"ملاحظات سريعة",noteTitle:"عنوان الملاحظة",noteBody:"اكتب فكرتك...",saveNote:"حفظ الملاحظة",noNotes:"ستظهر ملاحظاتك هنا.",progressHeading:"تقدم اليوم",progressText:"أكمل مهامك لتحقيق التقدم.",progressHint:"يعتمد تقدمك على مهام اليوم.",settingsHeading:"الإعدادات",languageHint:"اختر لغتك من القائمة بالأعلى.",export:"تصدير بياناتي",clear:"مسح جميع البيانات",privacy:"يتم حفظ بياناتك في هذا المتصفح على هذا الجهاز فقط.",confirm:"هل تريد حذف جميع بيانات DAYMATE؟",empty:"اكتب شيئاً أولاً.",allDone:"عمل رائع! اكتملت جميع المهام."},
+fr:{greeting:"Faites de cette journée une réussite !",sub:"Les petits pas quotidiens mènent à de grands résultats.",tasks:"Tâches terminées",habits:"Habitudes du jour",notes:"Notes enregistrées",today:"Aujourd'hui",habitsTab:"Habitudes",notesTab:"Notes",progress:"Progrès",settings:"Paramètres",taskHeading:"Mes tâches quotidiennes",taskPlaceholder:"Que devez-vous faire ?",addTask:"+ Ajouter",noTasks:"Aucune tâche. Ajoutez votre première tâche.",habitHeading:"Créez de bonnes habitudes",habitPlaceholder:"Ex. Lire 10 minutes",addHabit:"+ Ajouter une habitude",noHabits:"Ajoutez une habitude à développer.",notesHeading:"Notes rapides",noteTitle:"Titre de la note",noteBody:"Écrivez votre idée...",saveNote:"Enregistrer",noNotes:"Vos notes apparaîtront ici.",progressHeading:"Progrès du jour",progressText:"Terminez vos tâches pour progresser.",progressHint:"Votre progrès dépend des tâches du jour.",settingsHeading:"Paramètres",languageHint:"Choisissez votre langue dans le menu supérieur.",export:"Exporter mes données",clear:"Tout effacer",privacy:"Vos données sont enregistrées dans ce navigateur sur cet appareil.",confirm:"Supprimer toutes vos données DAYMATE ?",empty:"Écrivez quelque chose.",allDone:"Bravo ! Toutes les tâches sont terminées."},
+hi:{greeting:"आज के दिन को खास बनाएं!",sub:"हर दिन के छोटे कदम बड़ी सफलता लाते हैं।",tasks:"पूरे किए गए काम",habits:"आज की आदतें",notes:"सेव किए नोट्स",today:"आज",habitsTab:"आदतें",notesTab:"नोट्स",progress:"प्रगति",settings:"सेटिंग्स",taskHeading:"मेरे रोज़ के काम",taskPlaceholder:"आपको क्या करना है?",addTask:"+ काम जोड़ें",noTasks:"अभी कोई काम नहीं है। पहला काम जोड़ें।",habitHeading:"अच्छी आदतें बनाएं",habitPlaceholder:"जैसे 10 मिनट पढ़ना",addHabit:"+ आदत जोड़ें",noHabits:"वह आदत जोड़ें जिसे आप बनाना चाहते हैं।",notesHeading:"क्विक नोट्स",noteTitle:"नोट का शीर्षक",noteBody:"अपना विचार लिखें...",saveNote:"नोट सेव करें",noNotes:"आपके नोट्स यहां दिखेंगे।",progressHeading:"आज की प्रगति",progressText:"आगे बढ़ने के लिए अपने काम पूरे करें।",progressHint:"आपकी प्रगति आज के कामों पर आधारित है।",settingsHeading:"सेटिंग्स",languageHint:"ऊपर दिए मेनू से भाषा चुनें।",export:"मेरा डेटा एक्सपोर्ट करें",clear:"सारा डेटा मिटाएं",privacy:"आपका डेटा इसी डिवाइस के ब्राउज़र में सेव होता है।",confirm:"क्या आप DAYMATE का सारा डेटा मिटाना चाहते हैं?",empty:"पहले कुछ लिखें।",allDone:"बहुत अच्छा! सारे काम पूरे हो गए।"},
+zh:{greeting:"让今天更有意义！",sub:"每天的小进步带来大成果。",tasks:"已完成任务",habits:"今日习惯",notes:"已保存笔记",today:"今天",habitsTab:"习惯",notesTab:"笔记",progress:"进度",settings:"设置",taskHeading:"我的每日任务",taskPlaceholder:"你需要做什么？",addTask:"+ 添加任务",noTasks:"还没有任务。添加你的第一个任务。",habitHeading:"培养好习惯",habitPlaceholder:"例如：阅读10分钟",addHabit:"+ 添加习惯",noHabits:"添加一个你想培养的习惯。",notesHeading:"快速笔记",noteTitle:"笔记标题",noteBody:"写下你的想法...",saveNote:"保存笔记",noNotes:"保存的笔记会显示在这里。",progressHeading:"今日进度",progressText:"完成任务以取得进展。",progressHint:"进度根据今天的任务计算。",settingsHeading:"设置",languageHint:"从顶部菜单选择语言。",export:"导出我的数据",clear:"清除所有数据",privacy:"你的数据保存在此设备的浏览器中。",confirm:"删除所有 DAYMATE 数据？",empty:"请先输入内容。",allDone:"做得好！所有任务已完成。"},
+pt:{greeting:"Faça o dia valer a pena!",sub:"Pequenos passos diários levam a grandes resultados.",tasks:"Tarefas concluídas",habits:"Hábitos de hoje",notes:"Notas salvas",today:"Hoje",habitsTab:"Hábitos",notesTab:"Notas",progress:"Progresso",settings:"Configurações",taskHeading:"Minhas tarefas diárias",taskPlaceholder:"O que você precisa fazer?",addTask:"+ Adicionar tarefa",noTasks:"Nenhuma tarefa. Adicione sua primeira tarefa.",habitHeading:"Crie bons hábitos",habitPlaceholder:"Ex.: Ler por 10 minutos",addHabit:"+ Adicionar hábito",noHabits:"Adicione um hábito que deseja criar.",notesHeading:"Notas rápidas",noteTitle:"Título da nota",noteBody:"Escreva sua ideia...",saveNote:"Salvar nota",noNotes:"Suas notas aparecerão aqui.",progressHeading:"Progresso de hoje",progressText:"Conclua tarefas para progredir.",progressHint:"Seu progresso é baseado nas tarefas de hoje.",settingsHeading:"Configurações",languageHint:"Escolha seu idioma no menu superior.",export:"Exportar meus dados",clear:"Apagar todos os dados",privacy:"Seus dados ficam salvos neste navegador e dispositivo.",confirm:"Apagar todos os dados do DAYMATE?",empty:"Escreva algo primeiro.",allDone:"Muito bem! Todas as tarefas concluídas."},
+de:{greeting:"Mach jeden Tag zu etwas Besonderem!",sub:"Kleine tägliche Schritte führen zu großen Ergebnissen.",tasks:"Erledigte Aufgaben",habits:"Heutige Gewohnheiten",notes:"Gespeicherte Notizen",today:"Heute",habitsTab:"Gewohnheiten",notesTab:"Notizen",progress:"Fortschritt",settings:"Einstellungen",taskHeading:"Meine täglichen Aufgaben",taskPlaceholder:"Was musst du erledigen?",addTask:"+ Aufgabe hinzufügen",noTasks:"Noch keine Aufgaben. Füge deine erste hinzu.",habitHeading:"Gute Gewohnheiten aufbauen",habitPlaceholder:"z. B. 10 Minuten lesen",addHabit:"+ Gewohnheit hinzufügen",noHabits:"Füge eine Gewohnheit hinzu.",notesHeading:"Schnelle Notizen",noteTitle:"Notiztitel",noteBody:"Schreibe deine Idee...",saveNote:"Notiz speichern",noNotes:"Deine Notizen erscheinen hier.",progressHeading:"Heutiger Fortschritt",progressText:"Erledige Aufgaben, um Fortschritte zu machen.",progressHint:"Dein Fortschritt basiert auf den heutigen Aufgaben.",settingsHeading:"Einstellungen",languageHint:"Wähle deine Sprache im oberen Menü.",export:"Meine Daten exportieren",clear:"Alle Daten löschen",privacy:"Deine Daten werden in diesem Browser auf diesem Gerät gespeichert.",confirm:"Alle DAYMATE-Daten löschen?",empty:"Bitte schreibe zuerst etwas.",allDone:"Gut gemacht! Alle Aufgaben erledigt."}
 };
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
-const googleProvider = new GoogleAuthProvider();
-
-let currentUser = null;
-let currentUserData = null;
-let isSignup = false;
-let feedUnsubscribe = null;
-let notificationUnsubscribe = null;
-let storyUnsubscribe = null;
-let allPosts = [];
 
 const $ = id => document.getElementById(id);
+const todayKey = () => new Date().toISOString().slice(0,10);
+let data = {tasks:[],habits:[],notes:[],habitChecks:{}};
+try { data = {...data,...JSON.parse(localStorage.getItem("daymate-data")||"{}")}; } catch(e) {}
+let lang = localStorage.getItem("daymate-lang") || "en";
+$("lang").value = lang;
 
-function toast(message){
-  const el=$("toast");
-  el.textContent=message;
-  el.style.display="block";
-  setTimeout(()=>el.style.display="none",3500);
+function save(){localStorage.setItem("daymate-data",JSON.stringify(data));render();}
+function t(key){return (translations[lang]||translations.en)[key]||translations.en[key]||key;}
+function safe(text){return String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function applyLanguage(){
+  const map={greeting:"greeting",welcomeSub:"sub",tasksLabel:"tasks",habitsLabel:"habits",notesLabel:"notes",taskHeading:"taskHeading",taskInput:"taskPlaceholder",addTask:"addTask",noTasks:"noTasks",habitHeading:"habitHeading",habitInput:"habitPlaceholder",addHabit:"addHabit",noHabits:"noHabits",notesHeading:"notesHeading",noteTitle:"noteTitle",noteBody:"noteBody",addNote:"saveNote",noNotes:"noNotes",progressHeading:"progressHeading",progressText:"progressText",progressHint:"progressHint",settingsHeading:"settingsHeading",languageHint:"languageHint",exportBtn:"export",clearBtn:"clear",privacyHint:"privacy"};
+  Object.entries(map).forEach(([id,key])=>{const el=$(id);if(!el)return;if(el.tagName==="INPUT"||el.tagName==="TEXTAREA")el.placeholder=t(key);else el.textContent=t(key);});
+  document.querySelectorAll("[data-i]").forEach(el=>{let k=el.dataset.i;el.textContent=t(k==="habits"?"habitsTab":k==="notes"?"notesTab":k);});
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==="ar"||lang==="ur"?"rtl":"ltr";
+  $("todaydate").textContent=new Date().toLocaleDateString(lang==="zh"?"zh-CN":lang,{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+  render();
 }
-
-function safe(value){
-  return String(value ?? "").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[c]));
+function render(){
+  $("taskList").innerHTML=data.tasks.map((x,i)=>`<div class="item ${x.done?"done":""}"><input type="checkbox" ${x.done?"checked":""} onchange="toggleTask(${i})"><span class="itemtext">${safe(x.text)}</span><button class="del" onclick="deleteTask(${i})">×</button></div>`).join("");
+  $("noTasks").classList.toggle("hidden",data.tasks.length>0);
+  $("habitList").innerHTML=data.habits.map((x,i)=>{let done=(data.habitChecks[todayKey()]||[]).includes(i);return `<div class="item"><span class="itemtext">${safe(x)}</span><button class="habitday ${done?"done":""}" onclick="toggleHabit(${i})">${done?"✓ Done":"✓ Check in"}</button><button class="del" onclick="deleteHabit(${i})">×</button></div>`}).join("");
+  $("noHabits").classList.toggle("hidden",data.habits.length>0);
+  $("noteList").innerHTML=data.notes.map((x,i)=>`<div class="note"><strong>${safe(x.title)}</strong><p>${safe(x.body)}</p><button class="del" onclick="deleteNote(${i})">×</button></div>`).join("");
+  $("noNotes").classList.toggle("hidden",data.notes.length>0);
+  let completed=data.tasks.filter(x=>x.done).length;
+  let habitsDone=(data.habitChecks[todayKey()]||[]).length;
+  $("taskCount").textContent=completed+"/"+data.tasks.length;
+  $("habitCount").textContent=habitsDone+"/"+data.habits.length;
+  $("noteCount").textContent=data.notes.length;
+  let pct=data.tasks.length?Math.round(completed/data.tasks.length*100):0;
+  $("progressBar").style.width=pct+"%";
+  $("progressPercent").textContent=pct+"%";
+  $("progressText").textContent=pct===100&&data.tasks.length?t("allDone"):t("progressText");
 }
-
-function friendlyError(error){
-  const messages={
-    "auth/invalid-email":"Email address is not valid.",
-    "auth/user-not-found":"Account not found. Please sign up.",
-    "auth/wrong-password":"Incorrect password.",
-    "auth/invalid-credential":"Email or password is incorrect.",
-    "auth/email-already-in-use":"This email is already registered.",
-    "auth/weak-password":"Password should be at least 6 characters.",
-    "auth/popup-closed-by-user":"Google login window was closed.",
-    "auth/unauthorized-domain":"Add your GitHub Pages domain in Firebase Authorized domains.",
-    "permission-denied":"Firebase permissions error. Check Firestore rules.",
-    "storage/unauthorized":"Storage rules are blocking this upload."
-  };
-  return messages[error.code] || error.message || "Something went wrong.";
-}
-
-async function saveUser(user,username){
-  const userRef=doc(db,"users",user.uid);
-  const snap=await getDoc(userRef);
-  if(!snap.exists()){
-    await setDoc(userRef,{
-      uid:user.uid,
-      username:username || user.displayName || user.email.split("@")[0],
-      email:user.email || "",
-      photo:user.photoURL || "",
-      createdAt:serverTimestamp()
-    });
-  }else{
-    currentUserData=snap.data();
-  }
-}
-
-window.toggleAuth=()=>{
-  isSignup=!isSignup;
-  $("name").style.display=isSignup?"block":"none";
-  $("authTitle").textContent=isSignup?"Create your account":"Welcome to GLOVIX";
-  $("mainAuthBtn").textContent=isSignup?"Sign Up":"Log In";
-  $("mainAuthBtn").onclick=isSignup?signup:login;
-  $("switchText").textContent=isSignup?"Already have an account?":"Don't have an account?";
-  $("switchLink").textContent=isSignup?"Log in":"Sign up";
-};
-
-window.login=async()=>{
-  try{
-    await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.signup=async()=>{
-  const name=$("name").value.trim();
-  if(!name){toast("Please enter your name.");return;}
-  try{
-    const result=await createUserWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);
-    await authUpdateProfile(result.user,{displayName:name});
-    await saveUser(result.user,name);
-    toast("Account created successfully!");
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.googleLogin=async()=>{
-  try{
-    await signInWithPopup(auth,googleProvider);
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.forgotPassword=async()=>{
-  const email=$("email").value.trim();
-  if(!email){toast("Enter your email first.");return;}
-  try{
-    await sendPasswordResetEmail(auth,email);
-    toast("Password reset email sent.");
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.logout=async()=>{
-  try{await signOut(auth);}catch(e){toast(friendlyError(e));}
-};
-
-onAuthStateChanged(auth,async user=>{
-  if(user){
-    currentUser=user;
-    try{
-      await saveUser(user);
-      const snap=await getDoc(doc(db,"users",user.uid));
-      currentUserData=snap.exists()?snap.data():{};
-      $("auth").style.display="none";
-      $("app").style.display="block";
-      $("bottomNav").style.display="flex";
-      $("sideUsername").textContent=currentUserData.username || user.displayName || "GLOVIX user";
-      startFeed();
-      startNotifications();
-      startStories();
-      loadProfile();
-    }catch(e){toast(friendlyError(e));}
-  }else{
-    currentUser=null;
-    currentUserData=null;
-    $("auth").style.display="block";
-    $("app").style.display="none";
-    $("bottomNav").style.display="none";
-    if(feedUnsubscribe)feedUnsubscribe();
-    if(notificationUnsubscribe)notificationUnsubscribe();
-    if(storyUnsubscribe)storyUnsubscribe();
-  }
-});
-
-window.showSection=(name)=>{
-  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-  const target=$(name+"Section");
-  if(target)target.classList.add("active");
-  if(name==="profile")loadProfile();
-  if(name==="search")$("searchInput").focus();
-  if(name==="notifications")markNotificationsRead();
-};
-
-async function uploadFile(file,folder){
-  if(!file)throw new Error("Please select a file.");
-  const maxSize=100*1024*1024;
-  if(file.size>maxSize)throw new Error("File is too large. Maximum size is 100 MB.");
-  const fileRef=ref(storage,`${folder}/${currentUser.uid}/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g,"_")}`);
-  const task=uploadBytesResumable(fileRef,file);
-  await new Promise((resolve,reject)=>{
-    task.on("state_changed",snapshot=>{
-      const percent=Math.round(snapshot.bytesTransferred/snapshot.totalBytes*100);
-      if(folder==="videos"||folder==="images")$("toast").textContent="Uploading: "+percent+"%";
-    },reject,resolve);
-  });
-  return await getDownloadURL(fileRef);
-}
-
-$("postFile").addEventListener("change",()=>{
-  const file=$("postFile").files[0];
-  $("uploadPreview").style.display="none";
-  $("imagePreview").style.display="none";
-  if(!file)return;
-  const url=URL.createObjectURL(file);
-  if(file.type.startsWith("video/")){
-    $("uploadPreview").src=url;
-    $("uploadPreview").style.display="block";
-  }else if(file.type.startsWith("image/")){
-    $("imagePreview").src=url;
-    $("imagePreview").style.display="block";
-  }
-});
-
-window.uploadPost=async()=>{
-  const file=$("postFile").files[0];
-  const caption=$("caption").value.trim();
-  if(!file){toast("Choose an image or video.");return;}
-  if(!file.type.startsWith("image/")&&!file.type.startsWith("video/")){
-    toast("Only image and video files are supported.");return;
-  }
-  try{
-    toast("Uploading your post...");
-    const folder=file.type.startsWith("video/")?"videos":"images";
-    const url=await uploadFile(file,folder);
-    await addDoc(collection(db,"posts"),{
-      uid:currentUser.uid,
-      username:currentUserData.username || currentUser.displayName || "User",
-      photo:currentUserData.photo || currentUser.photoURL || "",
-      mediaUrl:url,
-      mediaType:file.type.startsWith("video/")?"video":"image",
-      caption,
-      likes:0,
-      createdAt:serverTimestamp()
-    });
-    $("postFile").value="";
-    $("caption").value="";
-    $("uploadPreview").style.display="none";
-    $("imagePreview").style.display="none";
-    toast("Post shared!");
-    showSection("home");
-  }catch(e){toast(friendlyError(e));}
-};
-
-function mediaMarkup(post){
-  const url=safe(post.mediaUrl || post.videoUrl || post.image || "");
-  const type=post.mediaType || (post.videoUrl?"video":"image");
-  if(type==="video" || url.match(/\.(mp4|webm|mov)(\?|$)/i)){
-    return `<video class="post-media" src="${url}" controls playsinline preload="metadata"></video>`;
-  }
-  return `<img class="post-media" src="${url}" alt="Post image" loading="lazy">`;
-}
-
-function postMarkup(post,id){
-  const username=safe(post.username || "User");
-  const photo=safe(post.photo || "https://placehold.co/80x80/222/fff?text=G");
-  const caption=safe(post.caption || "");
-  const date=post.createdAt?.toDate?post.createdAt.toDate().toLocaleString():"";
-  return `<article class="card" id="post-${safe(id)}">
-    <div class="post-head">
-      <img class="avatar" src="${photo}" alt="">
-      <b>${username}</b>
-    </div>
-    ${mediaMarkup(post)}
-    <div class="post-actions">
-      <button onclick="likePost('${safe(id)}')" title="Like">♡</button>
-      <button onclick="focusComment('${safe(id)}')" title="Comment">◯</button>
-      <button onclick="sharePost('${safe(id)}')" title="Share">↗</button>
-      <span class="muted" style="margin-left:auto">${Number(post.likes||0)} likes</span>
-    </div>
-    <div class="post-caption"><b>${username}</b> ${caption}</div>
-    <div class="post-meta">${safe(date)}</div>
-    <div class="post-comments" id="comments-${safe(id)}">
-      <button class="btn2" onclick="loadComments('${safe(id)}')">View comments</button>
-    </div>
-    <div class="comment-form">
-      <input id="comment-input-${safe(id)}" placeholder="Add a comment...">
-      <button onclick="addComment('${safe(id)}')">Post</button>
-    </div>
-  </article>`;
-}
-
-function startFeed(){
-  const q=query(collection(db,"posts"),orderBy("createdAt","desc"),limit(50));
-  feedUnsubscribe=onSnapshot(q,snapshot=>{
-    allPosts=snapshot.docs.map(d=>({id:d.id,...d.data()}));
-    renderFeed();
-  },e=>toast(friendlyError(e)));
-}
-
-function renderFeed(){
-  $("feed").innerHTML=allPosts.length?allPosts.map(p=>postMarkup(p,p.id)).join(""):'<div class="empty">No posts yet. Be the first to share!</div>';
-  const reels=allPosts.filter(p=>p.mediaType==="video");
-  $("reelsFeed").innerHTML=reels.length?reels.map(p=>`<div class="reel">${postMarkup(p,p.id)}</div>`).join(""):'<div class="empty">No Reels yet. Upload a video to get started.</div>';
-  $("postCount").textContent=allPosts.filter(p=>p.uid===currentUser?.uid).length;
-  $("myPosts").innerHTML=allPosts.filter(p=>p.uid===currentUser?.uid).map(p=>postMarkup(p,p.id)).join("") || '<div class="empty">You have no posts yet.</div>';
-}
-
-window.likePost=async(postId)=>{
-  try{
-    const postRef=doc(db,"posts",postId);
-    const likeRef=doc(db,"posts",postId,"likes",currentUser.uid);
-    let liked=false;
-    await runTransaction(db,async transaction=>{
-      const likeSnap=await transaction.get(likeRef);
-      const postSnap=await transaction.get(postRef);
-      if(!postSnap.exists())throw new Error("Post not found.");
-      const count=Number(postSnap.data().likes||0);
-      if(likeSnap.exists()){
-        transaction.delete(likeRef);
-        transaction.update(postRef,{likes:Math.max(0,count-1)});
-      }else{
-        transaction.set(likeRef,{uid:currentUser.uid,createdAt:serverTimestamp()});
-        transaction.update(postRef,{likes:count+1});
-        liked=true;
-      }
-    });
-    if(liked){
-      const snap=await getDoc(postRef);
-      const owner=snap.data()?.uid;
-      if(owner && owner!==currentUser.uid){
-        await notifyUser(owner,"like",`${currentUserData.username} liked your post.`,postId);
-      }
-    }
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.focusComment=(postId)=>{
-  const input=$("comment-input-"+postId);
-  if(input)input.focus();
-};
-
-window.addComment=async(postId)=>{
-  const input=$("comment-input-"+postId);
-  const text=input?.value.trim();
-  if(!text)return;
-  try{
-    await addDoc(collection(db,"posts",postId,"comments"),{
-      uid:currentUser.uid,
-      username:currentUserData.username || "User",
-      text,
-      createdAt:serverTimestamp()
-    });
-    input.value="";
-    await loadComments(postId);
-    const post=allPosts.find(p=>p.id===postId);
-    if(post && post.uid!==currentUser.uid){
-      await notifyUser(post.uid,"comment",`${currentUserData.username} commented on your post.`,postId);
-    }
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.loadComments=async(postId)=>{
-  try{
-    const q=query(collection(db,"posts",postId,"comments"),orderBy("createdAt","asc"),limit(50));
-    const snap=await getDocs(q);
-    const box=$("comments-"+postId);
-    if(!box)return;
-    box.innerHTML=snap.empty?'<p class="small">No comments yet.</p>':snap.docs.map(d=>{
-      const c=d.data();
-      return `<div class="comment-row"><b>${safe(c.username)}</b> ${safe(c.text)}</div>`;
-    }).join("");
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.sharePost=async(postId)=>{
-  const url=location.href.split("#")[0]+"#post-"+postId;
-  try{
-    if(navigator.share)await navigator.share({title:"GLOVIX",url});
-    else{await navigator.clipboard.writeText(url);toast("Post link copied.");}
-  }catch(e){if(e.name!=="AbortError")toast("Could not share this post.");}
-};
-
-async function notifyUser(recipientUid,type,message,postId=""){
-  if(!recipientUid || recipientUid===currentUser.uid)return;
-  await addDoc(collection(db,"users",recipientUid,"notifications"),{
-    type,
-    fromUid:currentUser.uid,
-    fromUsername:currentUserData.username || "User",
-    message,
-    postId,
-    read:false,
-    createdAt:serverTimestamp()
-  });
-}
-
-function startNotifications(){
-  const q=query(collection(db,"users",currentUser.uid,"notifications"),orderBy("createdAt","desc"),limit(40));
-  notificationUnsubscribe=onSnapshot(q,snap=>{
-    const docs=snap.docs;
-    const unread=docs.filter(d=>!d.data().read).length;
-    $("unreadCount").textContent=unread?`(${unread} unread)`:"";
-    $("notificationList").innerHTML=docs.length?docs.map(d=>{
-      const n=d.data();
-      return `<div class="user-row">
-        <div style="flex:1"><b>${safe(n.fromUsername||"GLOVIX user")}</b><p class="small">${safe(n.message||"New notification")}</p></div>
-        <span class="small">${n.read?"Seen":"New"}</span>
-      </div>`;
-    }).join(""):'<div class="empty">No notifications yet.</div>';
-  },e=>toast(friendlyError(e)));
-}
-
-async function markNotificationsRead(){
-  try{
-    const q=query(collection(db,"users",currentUser.uid,"notifications"),where("read","==",false),limit(40));
-    const snap=await getDocs(q);
-    await Promise.all(snap.docs.map(d=>updateDoc(d.ref,{read:true})));
-  }catch(e){console.warn(e);}
-}
-
-window.searchUsers=async()=>{
-  const term=$("searchInput").value.trim().toLowerCase();
-  if(!term){$("searchResults").innerHTML="";return;}
-  try{
-    const snap=await getDocs(query(collection(db,"users"),limit(100)));
-    const matches=snap.docs.map(d=>d.data()).filter(u=>
-      (u.username||"").toLowerCase().includes(term) && u.uid!==currentUser.uid
-    );
-    $("searchResults").innerHTML=matches.length?matches.map(u=>`
-      <div class="user-row">
-        <img class="avatar" src="${safe(u.photo||"https://placehold.co/80x80/222/fff?text=G")}">
-        <b>${safe(u.username||"User")}</b>
-        <button class="btn" onclick="followUser('${safe(u.uid)}')">Follow</button>
-      </div>`).join(""):'<div class="empty">No users found.</div>';
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.followUser=async(targetUid)=>{
-  if(targetUid===currentUser.uid)return;
-  try{
-    const followingRef=doc(db,"users",currentUser.uid,"following",targetUid);
-    const followerRef=doc(db,"users",targetUid,"followers",currentUser.uid);
-    const existing=await getDoc(followingRef);
-    if(existing.exists()){
-      await deleteDoc(followingRef);
-      await deleteDoc(followerRef);
-      toast("Unfollowed.");
-    }else{
-      await setDoc(followingRef,{uid:targetUid,createdAt:serverTimestamp()});
-      await setDoc(followerRef,{uid:currentUser.uid,createdAt:serverTimestamp()});
-      await notifyUser(targetUid,"follow",`${currentUserData.username} started following you.`);
-      toast("Following!");
-    }
-    loadProfile();
-  }catch(e){toast(friendlyError(e));}
-};
-
-async function loadProfile(){
-  if(!currentUser)return;
-  try{
-    const snap=await getDoc(doc(db,"users",currentUser.uid));
-    currentUserData=snap.exists()?snap.data():{};
-    $("profileName").textContent=currentUserData.username||currentUser.displayName||"User";
-    $("profileEmail").textContent=currentUser.email||"";
-    $("profilePhoto").src=currentUserData.photo||currentUser.photoURL||"https://placehold.co/100x100/222/fff?text=G";
-    $("editUsername").value=currentUserData.username||"";
-    const followers=await getDocs(collection(db,"users",currentUser.uid,"followers"));
-    const following=await getDocs(collection(db,"users",currentUser.uid,"following"));
-    $("followersCount").textContent=followers.size;
-    $("followingCount").textContent=following.size;
-    $("postCount").textContent=allPosts.filter(p=>p.uid===currentUser.uid).length;
-  }catch(e){toast(friendlyError(e));}
-}
-
-window.updateUsername=async()=>{
-  const username=$("editUsername").value.trim();
-  if(username.length<3){toast("Username must be at least 3 characters.");return;}
-  try{
-    await updateDoc(doc(db,"users",currentUser.uid),{username});
-    currentUserData.username=username;
-    await authUpdateProfile(currentUser,{displayName:username});
-    $("profileName").textContent=username;
-    $("sideUsername").textContent=username;
-    toast("Username updated.");
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.updatePhoto=async()=>{
-  const file=$("photoFile").files[0];
-  if(!file){toast("Choose a photo first.");return;}
-  if(!file.type.startsWith("image/")){toast("Choose an image.");return;}
-  try{
-    const url=await uploadFile(file,"profilePhotos");
-    await updateDoc(doc(db,"users",currentUser.uid),{photo:url});
-    await authUpdateProfile(currentUser,{photoURL:url});
-    currentUserData.photo=url;
-    $("profilePhoto").src=url;
-    toast("Profile photo updated.");
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.requestVerification=async()=>{
-  const reason=$("verifyReason").value.trim();
-  if(reason.length<10){toast("Please write a little more about your request.");return;}
-  try{
-    await addDoc(collection(db,"verificationRequests"),{
-      uid:currentUser.uid,
-      username:currentUserData.username||"User",
-      reason,
-      status:"pending",
-      createdAt:serverTimestamp()
-    });
-    $("verifyStatus").textContent="Your request has been submitted and is pending review.";
-    $("verifyReason").value="";
-    toast("Verification request sent.");
-  }catch(e){toast(friendlyError(e));}
-};
-
-window.uploadStory=async()=>{
-  const file=$("storyFile").files[0];
-  if(!file){toast("Choose a story image or video.");return;}
-  if(!file.type.startsWith("image/")&&!file.type.startsWith("video/")){
-    toast("Choose an image or video.");return;
-  }
-  try{
-    toast("Uploading story...");
-    const folder=file.type.startsWith("video/")?"videos":"images";
-    const url=await uploadFile(file,folder);
-    await addDoc(collection(db,"stories"),{
-      uid:currentUser.uid,
-      username:currentUserData.username||"User",
-      photo:currentUserData.photo||"",
-      mediaUrl:url,
-      mediaType:file.type.startsWith("video/")?"video":"image",
-      createdAt:serverTimestamp(),
-      expiresAt:Date.now()+24*60*60*1000
-    });
-    $("storyFile").value="";
-    toast("Story shared for 24 hours!");
-  }catch(e){toast(friendlyError(e));}
-};
-
-function startStories(){
-  const q=query(collection(db,"stories"),orderBy("createdAt","desc"),limit(50));
-  storyUnsubscribe=onSnapshot(q,snap=>{
-    const active=snap.docs.map(d=>({id:d.id,...d.data()})).filter(s=>s.expiresAt>Date.now());
-    const own=`<div class="story" onclick="showSection('upload')"><div class="circle">＋</div>Your story</div>`;
-    $("stories").innerHTML=own+active.map(s=>`
-      <div class="story" onclick="viewStory('${safe(s.id)}')">
-        <img src="${safe(s.photo||"https://placehold.co/80x80/222/fff?text=G")}">
-        ${safe(s.username||"User")}
-      </div>`).join("");
-  },e=>toast(friendlyError(e)));
-}
-
-window.viewStory=async(storyId)=>{
-  try{
-    const snap=await getDoc(doc(db,"stories",storyId));
-    if(!snap.exists()){toast("Story not found.");return;}
-    const s=snap.data();
-    if(s.expiresAt<=Date.now()){toast("This story has expired.");return;}
-    if(s.mediaType==="video"){
-      const w=window.open("","_blank");
-      if(w)w.document.write(`<video src="${safe(s.mediaUrl)}" controls autoplay style="width:100%;height:100%;background:#000"></video>`);
-    }else{
-      const w=window.open("","_blank");
-      if(w)w.document.write(`<img src="${safe(s.mediaUrl)}" style="max-width:100%;max-height:100%;display:block;margin:auto">`);
-    }
-  }catch(e){toast(friendlyError(e));}
-};
-
+function addTask(){let v=$("taskInput").value.trim();if(!v)return;$("taskInput").value="";data.tasks.push({text:v,done:false});save();}
+function addHabit(){let v=$("habitInput").value.trim();if(!v)return;$("habitInput").value="";data.habits.push(v);save();}
+function addNote(){let title=$("noteTitle").value.trim(),body=$("noteBody").value.trim();if(!title&&!body){alert(t("empty"));return;}data.notes.unshift({title:title||"Note",body});$("noteTitle").value="";$("noteBody").value="";save();}
+function toggleTask(i){data.tasks[i].done=!data.tasks[i].done;save();}
+function deleteTask(i){data.tasks.splice(i,1);save();}
+function toggleHabit(i){let list=data.habitChecks[todayKey()]||[];data.habitChecks[todayKey()]=list.includes(i)?list.filter(n=>n!==i):[...list,i];save();}
+function deleteHabit(i){data.habits.splice(i,1);data.habitChecks={};save();}
+function deleteNote(i){data.notes.splice(i,1);save();}
+$("addTask").onclick=addTask;
+$("taskInput").addEventListener("keydown",e=>{if(e.key==="Enter")addTask();});
+$("addHabit").onclick=addHabit;
+$("habitInput").addEventListener("keydown",e=>{if(e.key==="Enter")addHabit();});
+$("addNote").onclick=addNote;
+$("lang").onchange=e=>{lang=e.target.value;localStorage.setItem("daymate-lang",lang);applyLanguage();};
+document.querySelectorAll("nav button").forEach(btn=>btn.onclick=()=>{document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.querySelectorAll(".tab").forEach(s=>s.classList.add("hidden"));$(btn.dataset.tab).classList.remove("hidden");});
+$("exportBtn").onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="daymate-backup.json";a.click();URL.revokeObjectURL(a.href);};
+$("clearBtn").onclick=()=>{if(confirm(t("confirm"))){data={tasks:[],habits:[],notes:[],habitChecks:{}};save();}};
+applyLanguage();
 </script>
 </body>
 </html>
